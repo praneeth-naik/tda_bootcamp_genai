@@ -54,7 +54,7 @@ export default function Home() {
             <div className="max-w-2xl mx-auto px-6 pb-8">
                 <header className="mb-12">
                     <h1 className="text-2xl font-medium tracking-tight text-zinc-100">
-                        Custom AI Persona Studio
+                        AI Persona Studio
                     </h1>
                 </header>
 
