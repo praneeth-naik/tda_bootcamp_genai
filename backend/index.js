@@ -10,15 +10,22 @@ const PORT = process.env.PORT || 5000;
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
+const chatHistory = [];
+
 app.use(cors());
 app.use(express.json());
+
+app.get('/api/history', (req, res) => {
+    const reversedHistory = [...chatHistory].reverse();
+    res.json(reversedHistory);
+});
 
 app.post('/api/generate', async (req, res) => {
     const { userInput, systemPersona } = req.body;
 
     if (!userInput || userInput.trim() === "") {
         return res.status(400).json({ error: "Input text cannot be empty." });
-    }
+    }   
 
     let finalInstruction = "";
 
@@ -45,6 +52,15 @@ app.post('/api/generate', async (req, res) => {
         const result = await model.generateContent(`${finalInstruction}\n\nUser Input: ${userInput}`);
         
         const responseText = result.response.text();
+
+        chatHistory.push({
+            id: Date.now().toString(),
+            timestamp: new Date().toISOString(),
+            persona: systemPersona || 'custom',
+            userInput: userInput,
+            response: responseText
+        });
+
         res.json({ result: responseText });
     } catch (error) {
         console.error("Gemini API Error:", error);
