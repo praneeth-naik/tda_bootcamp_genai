@@ -100,7 +100,7 @@ export default function Home() {
                                 type="text"
                                 value={customPersona}
                                 onChange={(e) => setCustomPersona(e.target.value)}
-                                placeholder="e.g., A cynical code reviewer"
+                                placeholder="e.g., A data analyst"
                                 className="w-full px-4 py-3 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-100 focus:outline-none focus:border-zinc-600 focus:ring-1 focus:ring-zinc-600 transition-colors placeholder-zinc-600"
                             />
                         </div>
