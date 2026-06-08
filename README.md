@@ -74,7 +74,7 @@ npm run dev
 
 ---
 
-## 💻 Usage
+## Usage
 
 1. Open the frontend URL in your browser (`http://localhost:5173`).
 2. In the **Studio** tab, type your prompt or paste text into the input box.
